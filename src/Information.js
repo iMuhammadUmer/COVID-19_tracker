@@ -5,7 +5,21 @@ import {
   Card,
   CardContent,
   Typography,
+  CardActions,
+  Button,
 } from "@material-ui/core";
+import { Doughnut } from "react-chartjs-2";
+
+const data = {
+  labels: ["Active Cases", "Recovered", "Deaths"],
+  datasets: [
+    {
+      data: [300, 50, 100],
+      backgroundColor: ["#FFCE56", "#36A2EB", "#FF6384"],
+      hoverBackgroundColor: ["#FFCE56", "#36A2EB", "#FF6384"],
+    },
+  ],
+};
 
 const useStyles = makeStyles({
   root: {
@@ -25,31 +39,54 @@ const useStyles = makeStyles({
     fontSize: 14,
   },
   pos: {
-    marginBottom: 12,
+    color: "black",
+    letterSpacing: 3,
   },
   grid: {
     width: "95%",
     marginTop: "1em",
   },
+  leftCard: {
+    width: "100%",
+    height: 300,
+    borderRadius: 10,
+    backgroundColor: "#efefef",
+    textAlign: "left",
+  },
+  totalCases: {
+    marginTop: "0.5em",
+  },
+  worldGraph: {
+    width: 50,
+    height: 50,
+  },
 });
 export const Information = () => {
   const classes = useStyles();
-  const bull = <span className={classes.bullet}>•</span>;
-
   return (
     <Grid container className={classes.grid}>
-      <Grid item xs={12} sm={3}>
-        <h1>sm 3</h1>
+      <Grid item xs={12} sm={4}>
+        <Card className={classes.leftCard} variant="outlined">
+          <CardContent>
+            <Typography
+              className={classes.title}
+              color="textSecondary"
+              gutterBottom
+            >
+              Coronavirus Cases
+            </Typography>
+            <div className={classes.totalCases}>
+              <Typography className={classes.pos} color="textSecondary">
+                World wide cases
+                <br />
+              </Typography>
+              <h1>123,456</h1>
+            </div>
+            <Doughnut data={data} width={700} height={300} />
+          </CardContent>
+        </Card>
       </Grid>
-      <Grid item xs={12} sm={9}>
-        <h1>sm 9</h1>
-      </Grid>
-      <Grid item xs={12} sm={3}>
-        <h1>sm 3</h1>
-      </Grid>
-      <Grid item xs={12} sm={9}>
-        <h1>sm 9</h1>
-      </Grid>
+      <Grid item xs={12} sm={8}></Grid>
     </Grid>
   );
 };
