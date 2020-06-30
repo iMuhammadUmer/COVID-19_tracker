@@ -6,18 +6,6 @@ import {
   Typography,
   Grid,
 } from "@material-ui/core";
-import { Doughnut } from "react-chartjs-2";
-
-const data = {
-  labels: ["Active Cases", "Recovered", "Deaths"],
-  datasets: [
-    {
-      data: [300, 50, 100],
-      backgroundColor: ["#FFCE56", "#31D994", "#FF6384"],
-      hoverBackgroundColor: ["#FFCE56", "#31D994", "#FF6384"],
-    },
-  ],
-};
 
 const useStyles = makeStyles({
   root: {
