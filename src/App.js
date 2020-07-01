@@ -1,7 +1,6 @@
 import React from "react";
 import "./App.css";
-import "./Header";
-import { Header } from "./Header";
+import { Header } from "./components/Header";
 import MainGrid from "./components/MainGrid";
 
 function App() {
