@@ -55,7 +55,7 @@ const useStyles = makeStyles({
     width: 200,
     height: 100,
     borderRadius: 10,
-    padding: 5,
+    padding: 2,
     border: 1,
     m: 1,
     borderColor: "black",
