@@ -21,12 +21,12 @@ export const CountryStats = () => {
   return (
     <div className={classes.root}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={4}>
           <Paper className={classes.paper}>
             <CountryList />
           </Paper>
         </Grid>
-        <Grid item xs={12} sm={6}>
+        <Grid item xs={12} sm={8}>
           <Paper className={classes.paper}>xs=12 sm=6</Paper>
         </Grid>
       </Grid>
