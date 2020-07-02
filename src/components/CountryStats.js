@@ -27,7 +27,7 @@ export const CountryStats = () => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={7}>
-          <Paper className={classes.paper}>xs=12 sm=6</Paper>
+          <Paper className={classes.paper}>Country graph</Paper>
         </Grid>
       </Grid>
     </div>
