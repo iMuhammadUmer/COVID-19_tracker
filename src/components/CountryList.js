@@ -18,21 +18,40 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CountriesList() {
   const [globalData, setGlobalData] = useState([{}]);
+  const [dataLoading, setDataLoading] = useState(false);
 
   useEffect(() => {
     async function getData() {
+      setDataLoading(true);
       const response = await fetch(
         "https://api.thevirustracker.com/free-api?countryTotals=ALL"
       );
       let data = await response.json();
-
       setGlobalData(Object.values(Object.values(data.countryitems)[0]));
-      console.log(Object.values(Object.values(data.countryitems)[0]));
+      setDataLoading(false);
     }
     getData();
   }, []);
 
   const classes = useStyles();
+
+  if (dataLoading) {
+    return (
+      <div className={classes.root}>
+        <table className={classes.table}>
+          <tbody>
+            {globalData.map((key, ind) => {
+              return (
+                <tr key={ind}>
+                  <th className={classes.title}>Loading</th>
+                </tr>
+              );
+            })}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 
   return (
     <div className={classes.root}>
