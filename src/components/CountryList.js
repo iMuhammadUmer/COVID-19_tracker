@@ -1,65 +1,56 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
 
 const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(1),
-    minWidth: 120,
-    maxWidth: 300,
-    width: "100%",
+  root: {
+    maxWidth: 1000,
+    margin: "0 auto",
   },
-  chips: {
-    display: "flex",
-    flexWrap: "wrap",
+  title: {
+    textAlign: "left",
   },
-  chip: {
-    margin: 2,
-  },
-  noLabel: {
-    marginTop: theme.spacing(3),
+  table: {
+    height: 450,
+    overflowY: "scroll",
+    display: "block",
   },
 }));
 
-const names = ["Pakistan", "USA", "UK", "Iran", "Oman", "UAE"];
+export default function CountriesList() {
+  const [globalData, setGlobalData] = useState([{}]);
 
-export const CountryList = () => {
-  const classes = useStyles();
-  const [personName, setPersonName] = React.useState([]);
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch(
+        "https://api.thevirustracker.com/free-api?countryTotals=ALL"
+      );
+      let data = await response.json();
 
-  const handleChangeMultiple = (event) => {
-    const { options } = event.target;
-    const value = [];
-    for (let i = 0, l = options.length; i < l; i += 1) {
-      if (options[i].selected) {
-        value.push(options[i].value);
-      }
+      setGlobalData(Object.values(Object.values(data.countryitems)[0]));
+      console.log(Object.values(Object.values(data.countryitems)[0]));
     }
-    setPersonName(value);
-  };
+    getData();
+  }, []);
+
+  const classes = useStyles();
 
   return (
-    <FormControl className={classes.formControl}>
-      <InputLabel shrink htmlFor="select-multiple-native">
-        Select Country
-      </InputLabel>
-      <Select
-        multiple
-        native
-        value={personName}
-        onChange={handleChangeMultiple}
-        inputProps={{
-          id: "select-multiple-native",
-        }}
-      >
-        {names.map((name) => (
-          <option key={name} value={name}>
-            {name}
-          </option>
-        ))}
-      </Select>
-    </FormControl>
+    <div className={classes.root}>
+      <table className={classes.table}>
+        <tbody>
+          {globalData.map((key, ind) => {
+            return (
+              <tr key={ind}>
+                <th className={classes.title}>{globalData[ind].title}</th>
+                <td>
+                  {globalData[ind].total_active_cases +
+                    globalData[ind].total_serious_cases}
+                </td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
   );
-};
+}
