@@ -4,7 +4,6 @@ import {
   Card,
   CardContent,
   Typography,
-  Grid,
 } from "@material-ui/core";
 
 const useStyles = makeStyles({
