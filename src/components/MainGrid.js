@@ -5,6 +5,7 @@ import Grid from "@material-ui/core/Grid";
 import { GlobalData } from "./GlobalData";
 import { CountryData } from "./CountryData";
 import { CountryStats } from "./CountryStats";
+import { WorldWideGraphOverTime } from "./WorldWideGraphOverTime";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,7 @@ export default function MainGrid() {
           <Paper className={classes.paper}>
             <GlobalData />
             <CountryData />
+            <WorldWideGraphOverTime />
           </Paper>
         </Grid>
         <Grid item xs={12} sm={8}>
