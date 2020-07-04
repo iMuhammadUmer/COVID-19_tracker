@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Paper from "@material-ui/core/Paper";
 import Grid from "@material-ui/core/Grid";
 import CountryList from "./CountryList";
+import { WorldMap } from "./WorldMap";
+import { CountryGraph } from "./CountryGraph";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,7 +29,8 @@ export const CountryStats = () => {
           </Paper>
         </Grid>
         <Grid item xs={12} sm={7}>
-          <Paper className={classes.paper}>Country graph</Paper>
+          <WorldMap />
+          <CountryGraph />
         </Grid>
       </Grid>
     </div>
