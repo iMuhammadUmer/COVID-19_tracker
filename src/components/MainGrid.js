@@ -35,6 +35,7 @@ export default function MainGrid() {
         <Grid item xs={12} sm={8}>
           <Paper className={classes.paper}>
             <CountryStats />
+
             <MostEffectedContries />
           </Paper>
         </Grid>
