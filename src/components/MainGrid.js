@@ -6,6 +6,7 @@ import { GlobalData } from "./GlobalData";
 import { CountryData } from "./CountryData";
 import { CountryStats } from "./CountryStats";
 import { WorldWideGraphOverTime } from "./WorldWideGraphOverTime";
+import { MostEffectedContries } from "./MostEffectedContries";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -34,6 +35,7 @@ export default function MainGrid() {
         <Grid item xs={12} sm={8}>
           <Paper className={classes.paper}>
             <CountryStats />
+            <MostEffectedContries />
           </Paper>
         </Grid>
       </Grid>
