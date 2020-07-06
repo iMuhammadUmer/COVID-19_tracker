@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { makeStyles, Card, CardContent, Typography } from "@material-ui/core";
 import { Doughnut } from "react-chartjs-2";
-import NumberFormat from "react-number-format";
+// import NumberFormat from "react-number-format";
+import CountUp from "react-countup";
 
 const data = {
   labels: ["Active Cases", "Recovered", "Deaths"],
@@ -121,15 +122,15 @@ export const GlobalData = () => {
             <br />
           </Typography>
           <h1>
-            <NumberFormat
-              value={
+            <CountUp
+              start={0}
+              end={
                 globalData &&
                 globalData.results &&
                 globalData.results[0].total_cases
               }
-              displayType={"text"}
-              thousandSeparator={true}
-              renderText={(value) => <div>{value}</div>}
+              duration={1}
+              separator=","
             />
           </h1>
         </div>
